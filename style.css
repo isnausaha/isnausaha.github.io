@@ -1,0 +1,277 @@
+:root {
+    --mini-margin: 24px;
+    --primary-color: #6165E6;
+    --secondary-color: #5357de;
+    --image-size: 25px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "nav header"
+        "nav banner"
+        "nav product";
+}
+
+nav {
+    height: 100%;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    align-items: center;
+    gap: 24px;
+    z-index: 1;
+}
+
+nav .logo {
+    padding: 16px 32px 16px 16px;
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 8px;
+}
+
+nav .menu {
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+nav .logo img {
+    width: var(--image-size);
+    height: var(--image-size);
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 16px 32px 16px 16px;
+    color: white;
+    gap: 8px;
+}
+
+
+nav li:hover {
+    background-color: #ffffff10;
+}
+
+nav li:nth-child(1) {
+    background-color: rgba(255, 255, 255, 0.167);
+}
+
+nav li:nth-child(1)::before {
+    content: '';
+    background-color: white;
+    width: 5px;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+}
+
+nav p {
+    font-weight: 500;
+    font-size: .8em;
+    margin-right: var(--mini-margin);
+}
+
+main {
+    background-color: #fff;
+}
+
+header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    display: flex;
+    background-color: var(--secondary-color);
+    padding: 12px;
+    align-items: center;
+    gap: 16px;
+}
+
+header .menu {
+    color: white;
+    display: none;
+    cursor: pointer;
+}
+
+
+header .search {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    padding: 8px;
+    background-color: white;
+    color: rgb(164, 164, 164);
+    border-radius: 50px;
+}
+
+.search span {
+    font-size: 18px;
+}
+
+
+header .search input {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    flex-grow: 1;
+    padding-left: 8px;
+}
+
+.language {
+    width: 20px;
+    height: 20px;
+    background-image: url(img/flag.png);
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.switch {
+    width: 40px;
+    background-color: white;
+    padding: 2px;
+    border-radius: 50px;
+}
+
+.slider {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+main {
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+main .banner {
+    grid-area: banner;
+    height: 200px;
+    background-image: url(img/sun.jpg);
+    background-blend-mode: color;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.288);
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 32px;
+    justify-content: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    color: white;
+}
+
+main .banner h3 {
+    color: yellow;
+}
+
+main .product {
+    grid-area: product;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+main .product p {
+    font-size: 1em;
+    font-weight: bold;
+    color: gray;
+}
+
+main .list {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+main .list .card {
+    border-radius: 16px;
+    padding: 8px;
+    gap: 8px;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 5px 10px #89898990;
+}
+
+main .list .card img {
+    width: 8vmax;
+    height: 8vmax;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+main .list .card h2 {
+    font-size: 1.5vmax;
+}
+
+
+@media only screen and (max-width:768px) {
+    body {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "banner"
+            "product";
+    }
+
+    main .banner {
+        height: 100px;
+    }
+
+    nav {
+        position: absolute;
+        display: none;
+        top: 0;
+    }
+
+    header .menu {
+        display: block;
+    }
+
+    nav .menu {
+        display: block;
+    }
+
+    main .list {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    main .list .card h2 {
+        font-size: 2vmax;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    main .list {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr;
+    }
+}
